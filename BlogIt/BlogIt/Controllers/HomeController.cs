@@ -10,6 +10,7 @@ namespace BlogIt.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Our Latest Blogs";
             return View();
         }
 
@@ -23,6 +24,13 @@ namespace BlogIt.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Blogs()
+        {
+            ViewBag.Message = "All The New Blogs.";
 
             return View();
         }
