@@ -1,0 +1,39 @@
+﻿@model BlogIt.DataModel.Models.Blog
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- blog -->
+<div class="blog" id="blog">
+    <div class="container">
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>@ViewBag.Message</h2>
+        </div>
+        @if (Model != null)
+        {
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6">
+                    <!-- blog entry -->
+                    <div class="entry">
+                        <!-- blog entry image -->
+                        <img class="img-responsive" src="~/img/blog/1.jpg" alt="Blog" />
+                        <!-- heading / blog post title -->
+                        <h3>@Model.Tilte</h3>
+                        <!-- blog information -->
+                        <span class="meta">
+                            @Model.Date | Tag: @Model.Tag
+                        </span>
+                        <!-- paragraph -->
+                        <p>@Model.Description</p>
+                        <div>
+                            @Html.ActionLink("Return to blogs page", "Blogs", "Home")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- blog end -->

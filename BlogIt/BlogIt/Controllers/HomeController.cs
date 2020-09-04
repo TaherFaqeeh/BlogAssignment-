@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogIt.DataModel.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,16 @@ namespace BlogIt.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDataContext _dataContext;
+        public HomeController(IDataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
         public ActionResult Index()
         {
+            var blogs = _dataContext.GetBlogs().Take(2).ToList();
             ViewBag.Message = "Our Latest Blogs";
-            return View();
+            return View(blogs);
         }
 
         public ActionResult About()
@@ -30,9 +37,11 @@ namespace BlogIt.Controllers
 
         public ActionResult Blogs()
         {
+            var blogs = _dataContext.GetBlogs().ToList();
+
             ViewBag.Message = "All The New Blogs.";
 
-            return View();
+            return View(blogs);
         }
     }
 }
