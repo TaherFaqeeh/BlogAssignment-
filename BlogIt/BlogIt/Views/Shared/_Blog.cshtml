@@ -1,30 +1,41 @@
-﻿<!-- blog -->
+﻿@model List<BlogIt.DataModel.Models.Blog>
+<!-- blog -->
 <div class="blog" id="blog">
     <div class="container">
         <div class="default-heading">
             <!-- heading -->
             <h2>@ViewBag.Message</h2>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <!-- blog entry -->
-                <div class="entry">
-                    <!-- blog entry image -->
-                    <img class="img-responsive" src="~/img/blog/1.jpg" alt="Blog" />
-                    <!-- heading / blog post title -->
-                    <h3><a href="#">Communicating with you every step of the way</a></h3>
-                    <!-- blog information -->
-                    <span class="meta">
-                        July 02, 2014 | Tag: Technology | By: David John
-                    </span>
-                    <!-- paragraph -->
-                    <p>We combine continuing education and constant monitoring us with your project details if you are interested to ge of industry trends and innovations to provide the right IT solution at the right time. Contact us with your project details if you are interested to get our Web Solution or Software Development Services.</p>
-                </div>
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="row">
+                @foreach (var blog in Model)
+                {
+                    <div class="col-md-6 col-sm-6">
+                        <!-- blog entry -->
+                        <div class="entry">
+                            <!-- blog entry image -->
+                            <img class="img-responsive" src="~/img/blog/1.jpg" alt="Blog" />
+                            <!-- heading / blog post title -->
+                            <h3>@blog.Tilte</h3>
+                            <!-- blog information -->
+                            <span class="meta">
+                                @blog.Date | Tag: @blog.Tag
+                            </span>
+                            <!-- paragraph -->
+                            <p>@blog.Description</p>
+                            <div>
+                                @Html.ActionLink("View", "Details", "Blog", new { id = blog.Id }, null)
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
-        <div class="text-center">
-            @Html.ActionLink("See More", "Blogs", "Home")
-        </div>
+        }
+        else
+        {
+            <p>There are no Blogs</p>
+        }
     </div>
 </div>
 <!-- blog end -->
