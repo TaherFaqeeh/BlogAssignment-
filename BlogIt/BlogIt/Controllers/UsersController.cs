@@ -1,5 +1,5 @@
-﻿using BlogIt.DataModel.Models;
-using BlogIt.DataModel.Services;
+﻿using BlogIt.Models;
+using BlogIt.Services;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
@@ -59,7 +59,7 @@ namespace BlogIt.Controllers
 
 
             ViewBag.Message = messsage;
-            return View(user);
+            return RedirectToAction("Index","Home",null);
         }
 
         public bool IsEmailExist(string email)
@@ -75,6 +75,27 @@ namespace BlogIt.Controllers
                 _dataContext.GetDbContexts().Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        ActionResult Login(string Email, string Password)
+        {
+            if (Email != null && Password != null)
+            {
+                var obj = _dataContext.GetUsers().FirstOrDefault(e => e.Email.Equals(Email) && e.Password == Password);
+
+                if (obj != null)
+                {
+                    Session["Email"] = obj.Email.ToString();
+                    Session["UserId"] = obj.Id.ToString();
+                }
+            }
+            return View();
         }
 
     }

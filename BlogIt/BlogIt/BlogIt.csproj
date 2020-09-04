@@ -151,10 +151,33 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Crypto.cs" />
+    <Compile Include="Enum\Tags.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009041601357_init.cs" />
+    <Compile Include="Migrations\202009041601357_init.Designer.cs">
+      <DependentUpon>202009041601357_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009042037495_UpdteUser.cs" />
+    <Compile Include="Migrations\202009042037495_UpdteUser.Designer.cs">
+      <DependentUpon>202009042037495_UpdteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009042122585_UpdateUsersModel.cs" />
+    <Compile Include="Migrations\202009042122585_UpdateUsersModel.Designer.cs">
+      <DependentUpon>202009042122585_UpdateUsersModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009042246455_Updated.cs" />
+    <Compile Include="Migrations\202009042246455_Updated.designer.cs">
+      <DependentUpon>202009042246455_Updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BlogContext.cs" />
+    <Compile Include="Services\BlogDbContext.cs" />
+    <Compile Include="Services\IDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -219,10 +242,10 @@
     <Content Include="Views\Home\Blogs.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -238,10 +261,18 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlogIt.Data\BlogIt.DataModel.csproj">
-      <Project>{2d508955-2f4e-4f9b-9e36-f66ec1a582ed}</Project>
-      <Name>BlogIt.DataModel</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\202009041601357_init.resx">
+      <DependentUpon>202009041601357_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009042037495_UpdteUser.resx">
+      <DependentUpon>202009042037495_UpdteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009042122585_UpdateUsersModel.resx">
+      <DependentUpon>202009042122585_UpdateUsersModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009042246455_Updated.resx">
+      <DependentUpon>202009042246455_Updated.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,4 @@
-using BlogIt.DataModel.Services;
+using BlogIt.Services;
 using System;
 
 using Unity;

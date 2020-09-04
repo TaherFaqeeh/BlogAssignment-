@@ -51,41 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\Tags.cs" />
-    <Compile Include="Migrations\202009041601357_init.cs" />
-    <Compile Include="Migrations\202009041601357_init.designer.cs">
-      <DependentUpon>202009041601357_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009042037495_UpdteUser.cs" />
-    <Compile Include="Migrations\202009042037495_UpdteUser.designer.cs">
-      <DependentUpon>202009042037495_UpdteUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009042122585_UpdateUsersModel.cs" />
-    <Compile Include="Migrations\202009042122585_UpdateUsersModel.designer.cs">
-      <DependentUpon>202009042122585_UpdateUsersModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BlogContext.cs" />
-    <Compile Include="Services\BlogDbContext.cs" />
-    <Compile Include="Services\IDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config.dis" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009041601357_init.resx">
-      <DependentUpon>202009041601357_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009042037495_UpdteUser.resx">
-      <DependentUpon>202009042037495_UpdteUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009042122585_UpdateUsersModel.resx">
-      <DependentUpon>202009042122585_UpdateUsersModel.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
