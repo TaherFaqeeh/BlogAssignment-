@@ -12,5 +12,6 @@ namespace BlogIt.DataModel.Services
     {
         DbSet<Blog> GetBlogs();
         DbContext GetDbContexts();
+        DbSet<User> GetUsers();
     }
 }

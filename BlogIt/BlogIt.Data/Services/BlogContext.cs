@@ -20,7 +20,12 @@ namespace BlogIt.DataModel.Services
 
         public DbContext GetDbContexts()
         {
-            return _db.DbContexts;
+            return this._db;
+        }
+
+        public DbSet<User> GetUsers()
+        {
+            return _db.Users;
         }
     }
 }
