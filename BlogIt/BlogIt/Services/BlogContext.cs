@@ -11,7 +11,7 @@ namespace BlogIt.Services
 
         public BlogContext(BlogDbContext db)
         {
-            _db = new BlogDbContext();
+            _db = db;
         }
         public DbSet<Blog> GetBlogs()
         {

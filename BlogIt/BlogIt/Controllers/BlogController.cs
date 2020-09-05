@@ -1,8 +1,5 @@
 ﻿using BlogIt.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using BlogIt.Models;
 using System.Data.Entity;
@@ -24,18 +21,26 @@ namespace BlogIt.Controllers
             return View(blogs);
         }
 
-        // GET: Blog
+        /// <summary>
+        /// Show Blog details
+        /// </summary>
         public ActionResult Details(int id)
         {
             var blog = _dataContext.GetBlogs().FirstOrDefault(e => e.Id == id);
             return View(blog);
         }
 
+        /// <summary>
+        /// Create blog
+        /// </summary>
         public ActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// Submit action for creating a blog
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Blog blog)
@@ -60,12 +65,18 @@ namespace BlogIt.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Modify blog
+        /// </summary>
         public ActionResult Modify(int id)
         {
             var blog = _dataContext.GetBlogs().FirstOrDefault(e => e.Id == id);
             return View(blog);
         }
 
+        /// <summary>
+        /// Submit action for editing a blog
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Modify(Blog blog)

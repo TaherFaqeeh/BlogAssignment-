@@ -9,18 +9,38 @@ namespace BlogIt.Controllers
     public class UsersController : Controller
     {
         private readonly IDataContext _dataContext;
-        BlogDbContext db = new BlogDbContext();
         public UsersController(IDataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        // GET: User
+        /// <summary>
+        /// Get user page
+        /// </summary>
+        public ActionResult Index(int? id)
+        {
+            if (string.IsNullOrEmpty(id.ToString()))
+            {
+                if (Session["UserId"] != null)
+                {
+                    id = int.Parse(Session["UserId"].ToString());
+                }
+            }
+            var blog = _dataContext.GetBlogs()?.Where(e => e.UserId == id).ToList();
+            return View(blog);
+        }
+
+        /// <summary>
+        /// Register new users
+        /// </summary>
         public ActionResult Register()
         {
             return View();
         }
 
+        /// <summary>
+        /// Submit action for registering a new user
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
@@ -54,26 +74,17 @@ namespace BlogIt.Controllers
             return RedirectToAction("Index", "Home", null);
         }
 
-        public bool IsEmailExist(string email)
-        {
-            var x = _dataContext.GetUsers().FirstOrDefault(e => e.Email == email);
-            return x != null;
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _dataContext.GetDbContexts().Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
+        /// <summary>
+        /// Login an existing users
+        /// </summary>
         public ActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// Submit action for logging in
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string Email, string Password)
@@ -110,23 +121,30 @@ namespace BlogIt.Controllers
             }
         }
 
-        public ActionResult Index(int? id)
-        {
-            if (string.IsNullOrEmpty(id.ToString()))
-            {
-                if (Session["UserId"] != null)
-                {
-                    id = int.Parse(Session["UserId"].ToString());
-                }
-            }
-            var blog = _dataContext.GetBlogs()?.Where(e => e.UserId == id).ToList();
-            return View(blog);
-        }
+        
 
+        /// <summary>
+        /// Logout users
+        /// </summary>
         public ActionResult Logout()
         {
             Session.Clear();
             return RedirectToAction("Index","Home",null);
+        }
+
+        public bool IsEmailExist(string email)
+        {
+            var x = _dataContext.GetUsers().FirstOrDefault(e => e.Email == email);
+            return x != null;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _dataContext.GetDbContexts().Dispose();
+            }
+            base.Dispose(disposing);
         }
 
     }

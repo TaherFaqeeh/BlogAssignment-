@@ -11,16 +11,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img class="img-responsive" src="~/img/logo.png" alt="Logo" /></a>
+                <a class="navbar-brand" href="/"><img class="img-responsive" src="~/assets/img/logo.png" alt="Logo" /></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @if (Session["UserId"] != null)
+                    @if (Session["UserId"] != null && Session["Email"]!= null && Session["Email"].ToString() != "Admin@blog.com")
                     {
+
                         <li>@Html.ActionLink("Logout", "Logout", "Users")</li>
                         <li>@Html.ActionLink("Profile", "Index", "Users")</li>
+                    }
+                    else if (Session["Email"]!= null && Session["Email"].ToString() == "Admin@blog.com")
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Users")</li>
+                        <li>@Html.ActionLink("Profile", "Index", "Admin")</li>
                     }
                     else
                     {
