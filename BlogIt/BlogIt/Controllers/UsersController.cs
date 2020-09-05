@@ -94,7 +94,7 @@ namespace BlogIt.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index",new {id = obj.Id});
                     }
                 }
                 else
@@ -110,9 +110,17 @@ namespace BlogIt.Controllers
             }
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View();
+            if (string.IsNullOrEmpty(id.ToString()))
+            {
+                if (Session["UserId"] != null)
+                {
+                    id = int.Parse(Session["UserId"].ToString());
+                }
+            }
+            var blog = _dataContext.GetBlogs()?.Where(e => e.UserId == id).ToList();
+            return View(blog);
         }
 
         public ActionResult Logout()

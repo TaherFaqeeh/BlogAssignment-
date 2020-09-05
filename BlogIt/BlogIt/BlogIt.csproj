@@ -156,21 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009041601357_init.cs" />
-    <Compile Include="Migrations\202009041601357_init.Designer.cs">
-      <DependentUpon>202009041601357_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009042037495_UpdteUser.cs" />
-    <Compile Include="Migrations\202009042037495_UpdteUser.Designer.cs">
-      <DependentUpon>202009042037495_UpdteUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009042122585_UpdateUsersModel.cs" />
-    <Compile Include="Migrations\202009042122585_UpdateUsersModel.Designer.cs">
-      <DependentUpon>202009042122585_UpdateUsersModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009042246455_Updated.cs" />
-    <Compile Include="Migrations\202009042246455_Updated.designer.cs">
-      <DependentUpon>202009042246455_Updated.cs</DependentUpon>
+    <Compile Include="Migrations\202009052014553_init.cs" />
+    <Compile Include="Migrations\202009052014553_init.designer.cs">
+      <DependentUpon>202009052014553_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -246,6 +234,9 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Blog\Modify.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -264,17 +255,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009041601357_init.resx">
-      <DependentUpon>202009041601357_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009042037495_UpdteUser.resx">
-      <DependentUpon>202009042037495_UpdteUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009042122585_UpdateUsersModel.resx">
-      <DependentUpon>202009042122585_UpdateUsersModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009042246455_Updated.resx">
-      <DependentUpon>202009042246455_Updated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009052014553_init.resx">
+      <DependentUpon>202009052014553_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

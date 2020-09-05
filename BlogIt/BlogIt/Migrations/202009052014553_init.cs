@@ -29,6 +29,7 @@
                         LastName = c.String(nullable: false, maxLength: 50),
                         Email = c.String(nullable: false),
                         Password = c.String(nullable: false),
+                        ConfirmPassword = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -1,4 +1,9 @@
 ﻿@model List<BlogIt.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
 <!-- blog -->
 <div class="blog" id="blog">
     <div class="container">
@@ -24,10 +29,6 @@
                             </span>
                             <div>
                                 @Html.ActionLink("View", "Details", "Blog", new { id = blog.Id }, null)
-                                @if (Session["UserId"] != null)
-                                {
-                                    @Html.ActionLink("Edit", "Modify", "Blog", new { id = blog.Id }, null)
-                                }
                             </div>
                         </div>
                     </div>

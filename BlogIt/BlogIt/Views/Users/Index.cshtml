@@ -1,7 +1,7 @@
-﻿
+﻿@model List<BlogIt.Models.Blog>
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+@Html.ActionLink("Create", "Create", "Blog", null, null)
+@Html.Partial("_Blog", Model)
 
