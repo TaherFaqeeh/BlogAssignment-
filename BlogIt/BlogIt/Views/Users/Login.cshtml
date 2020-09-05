@@ -10,7 +10,7 @@
         <div class="login-area">
             <!-- heading -->
             <h3>Sign In, To Your Account</h3>
-            @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+            @using (Html.BeginForm("Login", "Users", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
@@ -28,7 +28,7 @@
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" value="Login" class="btn btn-default">Login</button>
             }
         </div>
     </div>

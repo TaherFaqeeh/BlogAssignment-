@@ -25,8 +25,6 @@ namespace BlogIt.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
         {
-            var z = _dataContext.GetUsers().ToList();
-            string messsage = "";
             try
             {
                 if (ModelState.IsValid)
@@ -41,10 +39,6 @@ namespace BlogIt.Controllers
                     _dataContext.GetUsers().Add(user);
                     _dataContext.GetDbContexts().SaveChanges();
                 }
-                else
-                {
-                    messsage = "Invalid Request";
-                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -56,10 +50,8 @@ namespace BlogIt.Controllers
                     }
                 }
             }
-
-
-            ViewBag.Message = messsage;
-            return RedirectToAction("Index","Home",null);
+            ViewBag.erorr = "Invalid Request";
+            return RedirectToAction("Index", "Home", null);
         }
 
         public bool IsEmailExist(string email)
@@ -83,7 +75,8 @@ namespace BlogIt.Controllers
         }
 
         [HttpPost]
-        ActionResult Login(string Email, string Password)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string Email, string Password)
         {
             if (Email != null && Password != null)
             {
@@ -93,9 +86,39 @@ namespace BlogIt.Controllers
                 {
                     Session["Email"] = obj.Email.ToString();
                     Session["UserId"] = obj.Id.ToString();
+                    Session["First Name"] = obj.FirstName.ToString();
+
+                    if (obj.Email == "Admin@blog.com")
+                    {
+                        return RedirectToAction("Index", "Admin", null);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+                    ViewBag.error = "Faild to login";
+                    return RedirectToAction("Login");
                 }
             }
+            else
+            {
+                ViewBag.error = "Faild to login";
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult Index()
+        {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index","Home",null);
         }
 
     }
